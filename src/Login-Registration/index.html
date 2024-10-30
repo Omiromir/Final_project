@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="../../images/shortcut-logo.png"
+    />
+    <title>FlowFinance</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <video class="video-background" autoplay muted loop>
+      <source src="../Login-Registration/images/bg.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="section">
+      <div class="form-box">
+        <div class="button-box">
+          <div id="btn"></div>
+          <button type="button" class="toggle-btn" onclick="login()">
+            Login
+          </button>
+          <button type="button" class="toggle-btn" onclick="register()">
+            Register
+          </button>
+        </div>
+        <div class="social-icons">
+          <a href="https://www.fb.com/"><img src="images/fb.png" /></a>
+          <a href="https://www.twitter.com/"><img src="images//tw.png" /></a>
+          <a href="https://www.google.com/"><img src="images//gp.png" /></a>
+        </div>
+
+        <form id="login-form" class="input-group">
+          <input
+            type="text"
+            class="input-field"
+            id="login-username"
+            placeholder="User Id"
+            required
+          />
+          <input
+            type="text"
+            class="input-field"
+            id="login-password"
+            placeholder="Enter Password"
+            required
+          />
+          <input type="checkbox" class="check-box" /><span
+            >Remember Password</span
+          >
+          <button type="submit" class="submit-btn">Log in</button>
+          <p id="login-status"></p>
+        </form>
+
+        <form id="register-form" class="input-group">
+          <input
+            type="text"
+            class="input-field"
+            id="register-username"
+            placeholder="Your Username"
+            required
+          />
+          <input
+            type="text"
+            class="input-field"
+            id="register-password"
+            placeholder="Enter Password"
+            required
+          />
+          <input type="checkbox" class="check-box" /><span
+            >I agree to the terms & condition</span
+          >
+          <button type="submit" class="submit-btn">Register</button>
+          <p id="register-status"></p>
+        </form>
+      </div>
+    </div>
+  </body>
+
+  <script src="script.js">
+  </script>
+</html>
