@@ -203,7 +203,7 @@
     align-content: center;
     justify-content: center;
     color: #fff;
-    align-items: start;
+    align-items: center;
     justify-items: start;
   }
   
@@ -296,9 +296,9 @@
   }
   
   /* Booking */
-  
+
   .booking {
-    padding: 170px 50px;
+    padding: 120px 50px;
   }
   
   .booking-title {
@@ -307,8 +307,8 @@
     margin-bottom: 100px;
   }
   
+  
   .form {
-    display: flex;
     flex-direction: column;
     padding: 0 55px;
   }
@@ -342,7 +342,6 @@
   .form-input,
   .form-select {
     flex: 1 1 calc(50% - 1rem);
-    min-width: 150px;
     font-size: 18px;
   }
   
@@ -449,7 +448,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 60rem;
-  background-color: var(--color-primary);
+  background-color: #fff;
   padding: 5rem 6rem;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
   border-radius: 32px;
@@ -473,25 +472,40 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 50px;
 }
 
 .modal__header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
   font-size: 3.25rem;
-  margin-bottom: 4.5rem;
   line-height: 1.5;
+}
+
+.data  {
+  color: #333;
+  font-weight: 500;
+  font-size: 2.5rem;
+}
+
+.data a {
+  color: var(--color-primary-lighter);
 }
 
 .rainbow {
     text-transform: uppercase;
-    background-image: url(/images/rainbow_bg.jpg);
-    background-position: center;
-    background-clip: text;
-    color: transparent;
+    color: var(--color-primary-lighter);
+}
+
+.button_wrapper {
+  display: flex;
+  gap: 2rem;
 }
 
 .btn--close-modal {
   font-family: inherit;
-  color: #fff;
+  color: var(--color-primary);
   position: absolute;
   top: 0.5rem;
   right: 2rem;
@@ -502,16 +516,35 @@
 }
 
 .btn__modal {
-  text-align: center;
+    text-align: center;
+    text-transform: uppercase;
     min-width: 190px;
     padding: 20px;
-    border-radius: 50px;
+    border-radius: 20px;
     margin-bottom: 9px;
     transition: all .3s cubic-bezier(0.45, 0.1, 0.48, 1);
-    color: var(--color-primary-darker);
-    background-image: url(/images/rainbow_bg.jpg);
-    background-position: center;
+    color: #fff;
+    background-color: var(--color-primary-lighter);
     font-weight: 799;
+}
+
+.btn__modal:hover {
+  background-color: #10559f;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+.btn__modal:last-child {
+  background-color: transparent;
+  color: var(--color-primary-lighter);
+  border: 2px solid var(--color-primary-lighter);
+}
+
+.btn__modal:last-child:hover {
+    background-color: var(--color-primary-lighter);
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
 }
 
 .hidden {
@@ -519,17 +552,6 @@
   opacity: 0;
 }
 
-/* COOKIE MESSAGE */
-.cookie-message {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
-  background-color: white;
-  color: #bbb;
-  font-size: 1.5rem;
-  font-weight: 400;
-}
 
 #error-message{
   position: absolute;

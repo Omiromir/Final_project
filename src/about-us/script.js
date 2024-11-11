@@ -184,3 +184,15 @@ function toggleAccordion() {
 }
 
 items.forEach((item) => item.addEventListener("click", toggleAccordion));
+
+
+// BURGER MENU
+
+document.addEventListener('DOMContentLoaded', () => {
+  const burgerMenu = document.getElementById('burger-menu');
+  const navLinksWrapper = document.getElementById('nav-links-wrapper');
+
+  burgerMenu.addEventListener('click', () => {
+    navLinksWrapper.classList.toggle('show');
+  });
+});

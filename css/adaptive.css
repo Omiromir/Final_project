@@ -1,135 +1,301 @@
-
 @media (max-width: 1440px) {
-    .header__content {
-        max-width: 100rem;
-        font-size: 4rem;
-    }
+  .header__content {
+    max-width: 100rem;
+    font-size: 4rem;
+  }
 
-    .header__descr {
-        font-size: 2rem;
-    }
+  .header__img {
+    max-width: 40rem;
+    margin-left: 5rem;
+  }
 
-    .header__img {
-        max-width: 40rem;
-        margin-left: 5rem;
-    }
+  .features__feature {
+    width: 80%;
+  }
 
-    .features {
-        gap: 6rem;
-    }
+  /* BOOKING */
+  .form-top {
+    height: auto;
+  }
 
-    .features__feature {
-        width: 80%;
-        font-size: 1.8rem;
-    }
+  .form-left,
+  .form-right {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 
-    .features__header {
-        font-size: 2rem;
-    }
-}
+  .form-input,
+  .form-select,
+  .form-btn {
+    min-width: 100%;
+  }
 
-@media (max-width: 1024px) {
-    .header__content {
-        max-width: 80rem;
-        font-size: 3rem;
-    }
-
-    .header__descr {
-        font-size: 1.5rem;
-    }
-
-    .header__img {
-        max-width: 30rem;
-        margin-left: 4rem;
-    }
-
-    .features {
-        gap: 8rem;
-    }
-
-    .features__feature {
-        width: 85%;
-        font-size: 1.4rem;
-    }
-
-    .features__header {
-        font-size: 1.5rem;
-    }
-
-    .features__icon {
-        height: 4.5rem;
-        width: 4.5rem;
-    }
-
-    .form-input,
-  .form-select {
-    min-width: 100px;
+  .section__title,
+  .booking-title {
+    font-size: 3.5rem;
   }
 }
 
+@media (max-width: 1024px) {
+  .header__content {
+    max-width: 80rem;
+    font-size: 4rem;
+  }
+
+  .header__descr {
+    font-size: 2.5rem;
+  }
+
+  .header__img {
+    max-width: 30rem;
+    margin-left: 4rem;
+  }
+
+  .features__feature {
+    width: 85%;
+    font-size: 2rem;
+  }
+
+  .features__header {
+    font-size: 2.2rem;
+  }
+
+  .features__icon {
+    height: 4.5rem;
+    width: 4.5rem;
+  }
+
+  .form-input,
+  .form-select {
+    min-width: 100px;
+  }
+
+  
+}
+
 @media (max-width: 860px) {
-    .header__content {
-        max-width: 60rem;
-        font-size: 2rem;
-    }
+  .header__content {
+    max-width: 60rem;
+    font-size: 2.5rem;
+  }
 
-    .header__descr {
-        font-size: 1rem;
-    }
+  .header__descr {
+    font-size: 1.4rem;
+  }
 
-    .header__img {
-        max-width: 20rem;
-        margin-left: 3rem;
-    }
+  .header__img {
+    max-width: 20rem;
+    margin-left: 5rem;
+  }
 
-    .features {
-        gap: 10rem;
-    }
+  /* FEATURES */
+  .features__feature {
+    width: 90%;
+    font-size: 1.5rem;
+  }
 
-    .features__feature {
-        width: 90%;
-        font-size: 1rem;
-    }
+  .features__header {
+    font-size: 1.7rem;
+  }
 
-    .features__header {
-        font-size: 1rem;
-    }
+  .features__icon {
+    height: 3.5rem;
+    width: 3.5rem;
+  }
 
-    .features__icon {
-        height: 3.5rem;
-        width: 3.5rem;
-    }
-
-    .form-input,
+  .form-input,
   .form-select {
     min-width: 60px;
   }
 
-    .nav__links-wrapper {
-      display: none;
-      position: absolute;
-      top: 70px;
-      right: 0;
-      background-color: var(--color-primary-darker);
-      width: 100%;
-      padding: 1rem;
-    }
-  
-    .nav__links-wrapper.show {
-      display: block;
-    }
-  
-    .burger {
-      display: flex;
-    }
-  
-    .nav__links {
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-  
-    .nav__item {
-      margin: 1rem 0;
-    }
+  /* Navigation bar */
+
+  .nav__links-wrapper {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: var(--color-primary-darker);
+    width: 100%;
+    padding: 1rem;
   }
+
+  .nav__links-wrapper.show {
+    display: block;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .nav__links {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav__item {
+    margin: 1rem 0;
+  }
+
+  /* BOOKING */
+  .form-top {
+    flex-direction: column;
+  }
+
+  .form-left {
+    width: 100%;
+  }
+}
+
+
+/* For max-width 640px */
+@media (max-width: 680px) {
+  /* Header */
+
+  .section__header {
+    font-size: 2rem;
+  }
+
+  .header__content {
+    max-width: 50rem;
+    font-size: 2rem;
+  }
+
+  .header__img {
+    max-width: 18rem;
+    margin-left: 1rem;
+  }
+
+/* FEATURES */
+.features__feature {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .features__header {
+    font-size: 1.2rem;
+  }
+
+  .features__icon {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+ /* BOOKING */
+ .form {
+  padding: 0;
+}
+
+ .form-top {
+  flex-direction: column;
+}
+
+.form-left {
+  flex-direction: column;
+  width: 100%;
+}
+
+}
+
+/* For max-width 480px */
+@media (max-width: 500px) {
+  /* Header */
+  .header__content {
+    max-width: 40rem;
+    font-size: 1.8rem;
+  }
+
+  .header__img {
+    max-width: 18rem;
+    margin-left: 0;
+  }
+
+  /* FEATURES */
+  .features__feature {
+    font-size: .8rem;
+  }
+
+  .features__header {
+    font-size: 1rem;
+  }
+
+  .features__icon {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+
+  /* Booking Section */
+  
+
+  .form-top {
+    flex-direction: column;
+  }
+
+  .form-left {
+    width: 100%;
+  }
+
+  .form-input,
+  .form-select,
+  .form-btn {
+    font-size: 16px;
+  }
+
+  .section__title,
+  .booking-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* For max-width 320px */
+@media (max-width: 420px) {
+  /* Header */
+  .header__content {
+    grid-template-columns: 1fr;
+    gap: 10rem;
+    justify-items: center;
+    max-width: 30rem;
+    font-size: 2.5rem;
+  }
+
+  .header__img {
+    max-width: 20rem;
+  }
+
+ /* FEATURES */
+ .features__feature {
+    font-size: .5rem;
+  }
+
+  .features__header {
+    font-size: .8rem;
+  }
+
+  .features__icon {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+
+
+  /* Booking Section */
+  .form-top {
+    flex-direction: column;
+  }
+
+  .form-left {
+    width: 100%;
+  }
+
+  .form-input,
+  .form-select {
+    padding: 10px 20px;
+  }
+
+  .section__title,
+  .booking-title {
+    font-size: 1.8rem;
+  }
+}

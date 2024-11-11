@@ -11,6 +11,7 @@
     <title>FlowFinance</title>
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/adaptive.css">
   </head>
   <body>
     <header class="header" id="header">
@@ -24,30 +25,39 @@
             alt="FlowFinance"
           />
         </a>
-        <ul class="nav__links">
-          <li class="nav__item">
-            <a class="nav__link" href="../../index.html" aria-label="Home page"
-              >Home page</a
-            >
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="#" aria-label="About Us">About Us</a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="#reviews" aria-label="Customer reviews"
-              >Customer reviews</a
-            >
-          </li>
-          <li class="nav__item">
-            <a
-              class="nav__link nav__link--btn"
-              href="../Login-Registration/index.html"
-              aria-label="Open account"
-            >
-              Open account
-            </a>
-          </li>
-        </ul>
+
+        <div class="burger" id="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+       <div id="nav-links-wrapper" class="nav__links-wrapper" >
+          <ul class="nav__links">
+            <li class="nav__item">
+              <a class="nav__link" href="../../index.html" aria-label="Home page"
+                >Home page</a
+              >
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#" aria-label="About Us">About Us</a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#reviews" aria-label="Customer reviews"
+                >Customer reviews</a
+              >
+            </li>
+            <li class="nav__item">
+              <a
+                class="nav__link nav__link--btn"
+                href="../Login-Registration/index.html"
+                aria-label="Open account"
+              >
+                Open account
+              </a>
+            </li>
+          </ul>
+       </div>
       </nav>
       <div class="header__hero">
         <div class="hero__content">
@@ -80,46 +90,35 @@
         </div>
       </div>
     </header>
-    <main class="main">
-      <section id="about-us" class="about-us section">
+      <section id="about-us" class="about-us section section--offset">
         <div class="features">
-          <img
-            src="/src/about-us/images/bg-1.png"
-            data-src="/src/about-us/images/bg-1.png"
-            alt="Computer"
-            class="features__img lazy-img"
-          />
-          <div class="features__feature">
-            <h5 class="features__header">Our Mission</h5>
-            <p>
+          <figure class="hover-caption">
+            <img src="/images/bg-1.jpg" alt="">
+            <figcaption>
+              <h5 class="features__header">Our Mission</h5>
+              <p>
               Our experienced team helps small and medium businesses thrive with
               clear, practical financial solutions across finance, accounting,
               investment, and strategy.
-            </p>
-          </div>
-          <div class="features__feature">
-            <h5 class="features__header">Our team</h5>
+              </p>
+            </figcaption>
+          </figure>
+          <figure class="hover-caption">
+            <img src="/images/bg-2.jpg" alt="">
+            <figcaption>
+              <h5 class="features__header">Our team</h5>
             <p>
               Our team of&nbsp;seasoned financial experts specializes
               in&nbsp;helping small and medium businesses with practical,
               easy-to-implement solutions across finance, accounting,
               investment, and strategy.
             </p>
-          </div>
-          <img
-            src="/src/about-us/images/bg-2.png"
-            data-src="/src/about-us/images/bg-2.png"
-            alt="Plant"
-            class="features__img lazy-img"
-          />
-          <img
-            src="/src/about-us/images/bg-3.png"
-            data-src="/src/about-us/images/bg-3.png"
-            alt="Credit card"
-            class="features__img lazy-img"
-          />
-          <div class="features__feature">
-            <h5 class="features__header">Get in Touch</h5>
+            </figcaption>
+          </figure>
+          <figure class="hover-caption">
+            <img src="/images/bg-3.jpg" alt="">
+            <figcaption>
+              <h5 class="features__header">Get in Touch</h5>
             <p>
               If&nbsp;you&rsquo;re a&nbsp;small or&nbsp;medium business owner
               seeking financial guidance, we&rsquo;d love to&nbsp;hear from you.
@@ -127,7 +126,9 @@
               how we&nbsp;can help achieve your business goals. Let&rsquo;s
               build a&nbsp;stronger financial future together.
             </p>
-          </div>
+            </figcaption>
+          </figure>
+
         </div>
       </section>
       <section id="reviews" class="reviews section--offset">
@@ -167,7 +168,7 @@
             <div class="slide">
               <div class="testimonial">
                 <h5 class="testimonial__header">
-                  The smartest financial choice I've ever made!
+                  The great platform, i absolutely recommend this for everyone!
                 </h5>
                 <blockquote class="testimonial__text">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -180,12 +181,12 @@
                 </blockquote>
                 <address class="testimonial__author">
                   <img
-                    src="images/client-1.jpg"
+                    src="images/client-2.jpg"
                     alt=""
                     class="testimonial__photo"
                   />
-                  <h6 class="testimonial__name">Omir Sondai</h6>
-                  <p class="testimonial__location">Los Angeles, USA</p>
+                  <h6 class="testimonial__name">Jessica Davis</h6>
+                  <p class="testimonial__location">New York, USA</p>
                 </address>
               </div>
             </div>
@@ -195,7 +196,7 @@
           </div>
         </div>
       </section>
-      <section class="faqs section--offset">
+      <section class="faqs section section--offset">
         <div class="container">
           <h2 class="faqs__title">Frequently Asked Questions</h2>
           <div class="accordion">
@@ -278,7 +279,7 @@
           </div>
         </div>
       </section>
-    </main>
+
     <footer class="footer">
       <p class="footer__copyright">
         &copy; Copyright by

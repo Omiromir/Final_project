@@ -14,28 +14,33 @@ const navLinks = document.querySelector(".nav__links");
 
 //////////////////////////////////////////////////////////////
 // Modal open/close functions
-// const openModal = function (e) {
-//   e.preventDefault();
-//   modal?.classList.remove("hidden");
-//   overlay?.classList.remove("hidden");
-// };
+const openModal = function (e) {
+  modal?.classList.remove("hidden");
+  overlay?.classList.remove("hidden");
+};
 
-// const closeModal = function () {
-//   modal?.classList.add("hidden");
-//   overlay?.classList.add("hidden");
-// };
+const closeModal = function () {
+  modal?.classList.add("hidden");
+  overlay?.classList.add("hidden");
+};
 
-// // Open modal on button click
-// btnsOpenModal.forEach((btn) => btn.addEventListener("click", openModal));
-// btnCloseModal?.addEventListener("click", closeModal);
-// overlay?.addEventListener("click", closeModal);
+// Open modal on button click
+window.addEventListener("load", () => {
+  if (!localStorage.getItem("modalOpened")) {
+    openModal();
+    // Set a flag in localStorage so it won't open again
+    localStorage.setItem("modalOpened", "true");
+}
+});
+btnCloseModal?.addEventListener("click", closeModal);
+overlay?.addEventListener("click", closeModal);
 
-// // Close modal on "Escape" key press
-// document.addEventListener("keydown", function (e) {
-//   if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
-//     closeModal();
-//   }
-// });
+// Close modal on "Escape" key press
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
+    closeModal();
+  }
+});
 
 
 ////////////////////////////////////////////////
@@ -99,12 +104,12 @@ nav.addEventListener("mouseout", handleHover.bind(1));
 document.getElementById('myForm').addEventListener('submit', function(e) {
   e.preventDefault(); 
 
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const country = document.getElementById('country').value;
-  const comment = document.getElementById('comment').value.trim();
-  const agreement = document.getElementById('agreement').checked;
+  const name = document.getElementById('name');
+  const email = document.getElementById('email');
+  const phone = document.getElementById('phone');
+  const country = document.getElementById('country');
+  const comment = document.getElementById('comment');
+  const agreement = document.getElementById('agreement');
 
   const errorMessage = document.getElementById('error-message');
   errorMessage.innerHTML = '';  
@@ -112,35 +117,41 @@ document.getElementById('myForm').addEventListener('submit', function(e) {
 
   let valid = true;  
 
-  if (name === '') {
+  if (name.value.trim() === '') {
     errorMessage.innerHTML += 'Name is required.<br>';
     valid = false;
   }
 
   const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  if (!emailPattern.test(email)) {
+  if (!emailPattern.test(email.value.trim())) {
     errorMessage.innerHTML += 'Please enter a valid email address.<br>';
     valid = false;
   }
 
   const phonePattern = /^[0-9]{10,}$/;
-  if (!phonePattern.test(phone)) {
+  if (!phonePattern.test(phone.value.trim())) {
     errorMessage.innerHTML += 'Phone number must be at least 10 digits long.<br>';
     valid = false;
   }
 
-  if (country === 'Country') {
+  if (country.value === 'Country') {
     errorMessage.innerHTML += 'Please select a country.<br>';
     valid = false;
   }
 
-  if (!agreement) {
+  if (!agreement.checked) {
     errorMessage.innerHTML += 'You must agree to the terms and conditions.<br>';
     valid = false;
   }
 
   if (valid) {
     errorMessage.innerHTML = 'Form submitted successfully!';
+    name.value = ''
+    email.value = ''
+    phone.value = ''
+    country.value = "Country"
+    agreement.checked = false
+
     errorMessage.classList.remove('hidden')
   }
   setTimeout(function(){

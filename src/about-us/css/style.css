@@ -11,6 +11,7 @@ html {
 }
 
 body {
+  position: relative;
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   color: #444;
@@ -70,11 +71,14 @@ body::-webkit-scrollbar {
   font-weight: 500;
 }
 
+/* NAVIGATION  */
+
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 8rem;
+  height: 9rem;
+  min-width: 350px;
   width: 100%;
   padding: 0 6rem;
   z-index: 100;
@@ -89,11 +93,11 @@ body::-webkit-scrollbar {
 .nav__logo {
   width: 180px;
   height: 40px;
-  transition: all 0.5s ease-in-out;
+  transition: all .5s ease-in-out;
 }
 
 .nav__logo:hover {
-  filter: drop-shadow(0 0 5px #cbcfd2);
+  filter: drop-shadow(0 0 5px #CBCFD2);
 }
 
 .nav__links {
@@ -105,6 +109,7 @@ body::-webkit-scrollbar {
 .nav__item {
   margin-left: 4rem;
   color: #fff;
+  transition: all .2s ease;
 }
 
 .nav__item:hover {
@@ -144,9 +149,33 @@ body::-webkit-scrollbar {
 }
 
 .nav__link--btn:active {
+  color: inherit;
   background-color: var(--color-primary);
   color: var(--background-color-btn);
 }
+
+/* Burger menu */
+
+.burger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.burger span {
+  display: block;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+.nav__links-wrapper {
+  display: flex;
+}
+
 
 /* HEADER */
 
@@ -156,6 +185,7 @@ body::-webkit-scrollbar {
   background-image: url("../images/hero-bg.png");
   background-repeat: no-repeat;
   background-position: center;
+  background-attachment: fixed;
 }
 
 .hero__content {
@@ -200,6 +230,7 @@ body::-webkit-scrollbar {
 /* main */
 
 .about-us {
+  padding: 300px 50px;
   background-color: var(--background-color-btn);
 }
 
@@ -207,44 +238,56 @@ body::-webkit-scrollbar {
 
 .features {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.features__img {
-  width: 100%;
-  border-radius: 32px;
-}
-
-.features__feature {
-  align-self: center;
-  justify-self: center;
-  width: 70%;
-  font-size: 2.5rem;
-}
-
-.features__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-primary);
-  height: 5.5rem;
-  width: 5.5rem;
-  border-radius: 50%;
-  margin-bottom: 2rem;
-}
-
-.features__icon svg {
-  height: 2.5rem;
-  width: 2.5rem;
-  color: var(--background-color-btn);
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  gap: 5rem;
 }
 
 .features__header {
-  color: var(--color-primary);
+  color: var(--color-primary-lighter);
+  filter: drop-shadow(1px 1px var(--color-primary));
   font-weight: 700;
-  font-size: 2.5rem;
+  font-size: 4rem;
   margin-bottom: 1rem;
 }
+
+.hover-caption {
+  width: 45rem;
+  aspect-ratio: 13 / 11; 
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative; 
+}
+
+.hover-caption img {
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+  transition: transform 200ms, filter 200ms;
+}
+
+.hover-caption figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 5rem;
+  color: #fff;
+  filter: drop-shadow(1px 1px var(--color-primary));
+  font-weight: 640;
+  transform: translateY(100%); /* Starts off-screen */
+  transition: transform 200ms;
+}
+
+.hover-caption:hover figcaption {
+  transform: translateY(-1rem); /* Moves into view on hover */
+}
+
+.hover-caption:hover img {
+  transform: translateY(1rem); /* Applies translate on hover */
+  filter: blur(3px);
+}
+
 
 /* Clients */
 
@@ -389,7 +432,7 @@ body::-webkit-scrollbar {
 .accordion button:hover,
 .accordion button:focus {
   cursor: pointer;
-  color: #4d4d4d;
+  color: var(--color-primary-lighter);
 }
 .accordion button:hover::after,
 .accordion button:focus::after {
@@ -472,3 +515,5 @@ body::-webkit-scrollbar {
   font-size: 1.8rem;
   color: var(--background-color-btn);
 }
+
+
