@@ -100,6 +100,58 @@ nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
 
 ////////////////////////////////////
+// Status popup
+
+const toast = document.querySelector(".toast"),
+  closeIcon = document.querySelector(".close"),
+  progress = document.querySelector(".progress"),
+  formBtn = document.querySelector(".form-btn"),
+  root = document.documentElement;
+
+let statText = document.getElementById('toast__text--1'),
+    descrText = document.getElementById('toast__text--2');
+
+
+let timer1, timer2;
+
+function setToastProgressColor(color) {
+  root.style.setProperty('--toast-progress-bg', color);
+  statText.style.color = color
+}
+
+function showToast(status, message) {
+  statText.textContent = status
+  descrText.textContent = message
+
+  toast.classList.add("active");
+  progress.classList.add("active");
+
+  formBtn.classList.add("disabled");
+
+
+  timer1 = setTimeout(() => {
+    toast.classList.remove("active");
+
+    formBtn.classList.remove("disabled");
+  }, 5000); // 1s = 1000 milliseconds
+
+  timer2 = setTimeout(() => {
+    progress.classList.remove("active");
+  }, 5300);
+}
+
+function closeToast() {
+  toast.classList.remove("active");
+
+  setTimeout(() => {
+    progress.classList.remove("active");
+  }, 300);
+
+  clearTimeout(timer1);
+  clearTimeout(timer2);
+}
+
+
 //Form validation
 document.getElementById('myForm').addEventListener('submit', function(e) {
   e.preventDefault(); 
@@ -108,56 +160,77 @@ document.getElementById('myForm').addEventListener('submit', function(e) {
   const email = document.getElementById('email');
   const phone = document.getElementById('phone');
   const country = document.getElementById('country');
-  const comment = document.getElementById('comment');
   const agreement = document.getElementById('agreement');
-
-  const errorMessage = document.getElementById('error-message');
-  errorMessage.innerHTML = '';  
-  errorMessage.classList.remove('hidden')
-
-  let valid = true;  
-
-  if (name.value.trim() === '') {
-    errorMessage.innerHTML += 'Name is required.<br>';
-    valid = false;
+  
+  // Function to handle validation errors
+  function showError(message) {
+    setToastProgressColor("#ff3d27");
+    showToast("Error", message);
   }
 
-  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  if (!emailPattern.test(email.value.trim())) {
-    errorMessage.innerHTML += 'Please enter a valid email address.<br>';
-    valid = false;
+  // 1. Name Validation (Alphabetic and minimum length)
+  const nameValue = name.value.trim();
+  if (nameValue === '') {
+    showError("Name is required.");
+    return;
+  }
+  if (!/^[a-zA-Z\s]+$/.test(nameValue)) {
+    showError("Name must contain only letters and spaces.");
+    return;
+  }
+  if (nameValue.length < 6 || nameValue.length > 50) {
+    showError("Name must contain at least");
+    return;
   }
 
-  const phonePattern = /^[0-9]{10,}$/;
-  if (!phonePattern.test(phone.value.trim())) {
-    errorMessage.innerHTML += 'Phone number must be at least 10 digits long.<br>';
-    valid = false;
+  // 2. Email Validation (Format and domain check)
+  const emailValue = email.value.trim();
+  if (emailValue === '') {
+    showError("Email is required.");
+    return;
+  }
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailPattern.test(emailValue)) {
+    showError("Please enter a valid email address.");
+    return;
   }
 
-  if (country.value === 'Country') {
-    errorMessage.innerHTML += 'Please select a country.<br>';
-    valid = false;
+   // 3. Phone Number Validation
+   const phoneValue = phone.value.trim();
+   const phonenoPattern = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+   
+   if (!phonenoPattern.test(phoneValue)) {
+     showError("Please enter a valid phone number in the format 123-456-7890, 123.456.7890, or 123 456 7890.");
+     return;
+   }
+
+  // 4. Country Selection Validation (Ensure a country is selected)
+  const countryValue = country.value;
+  if (countryValue === 'Country' || countryValue === '') {
+    showError("Please select a country from the list.");
+    return;
   }
 
+  // 5. Agreement Checkbox Validation
   if (!agreement.checked) {
-    errorMessage.innerHTML += 'You must agree to the terms and conditions.<br>';
-    valid = false;
+    showError("You must agree to the terms and conditions before submitting.");
+    return;
   }
 
-  if (valid) {
-    errorMessage.innerHTML = 'Form submitted successfully!';
-    name.value = ''
-    email.value = ''
-    phone.value = ''
-    country.value = "Country"
-    agreement.checked = false
+  // If all validations pass, show success message
+  setToastProgressColor("#27ff4f");
+  showToast("Success", "Form submitted successfully!");
 
-    errorMessage.classList.remove('hidden')
-  }
-  setTimeout(function(){
-    errorMessage.classList.add('hidden')
-  }, 5000)
+  // Reset form fields after submission
+  name.value = '';
+  email.value = '';
+  phone.value = '';
+  country.value = "Country";
+  agreement.checked = false;
 });
+
+
+
 
 // BURGER MENU
 

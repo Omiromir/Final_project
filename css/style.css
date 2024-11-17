@@ -3,6 +3,7 @@
     --color-primary-darker: #01294f;
     --color-primary-lighter: #2a7bd1;
     --background-color-btn: #CBCFD2;
+    --toast-progress-bg: #ff3d27;
   }
   
   html {
@@ -553,28 +554,105 @@
 }
 
 
-#error-message{
-  position: absolute;
-  left: 650px;
-  top:  3200px;
-  padding: 10px;
-  background-color: #fff;
-  color: var(--color-primary);
-  transition: all .3s cubic-bezier(0.45, 0.1, 0.48, 1);
-  font-weight: 700;
-  width: fit-content;
-  border-radius: 20px;
+/* STATUS WINDOW */
+
+.toast {
+  position: fixed;
+  top: 120px;
+  right: 30px;
+  border-radius: 12px;
+  background: #fff;
+  padding: 20px 35px 20px 25px;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transform: translateX(calc(100% + 30px));
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
 }
 
-#status-message{
-  position: absolute;
-  left: 650px;
-  top:  3200px;
-  padding: 10px;
-  background-color: #fff;
-  color: var(--color-primary);
-  transition: all .3s cubic-bezier(0.45, 0.1, 0.48, 1);
-  font-weight: 700;
-  width: fit-content;
-  border-radius: 20px;
+.toast.active {
+  transform: translateX(0%);
 }
+
+.toast .toast-content {
+  display: flex;
+  align-items: center;
+}
+
+.toast-content .check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  min-width: 35px;
+  background-color: var(--toast-progress-bg);
+  color: #fff;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+.toast-content .message {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+}
+
+.message .text {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666666;
+}
+
+.message .text.text-1 {
+  font-weight: 600;
+  color: #333;
+}
+
+.toast .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  padding: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.toast .close:hover {
+  opacity: 1;
+}
+
+.toast .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+
+}
+
+.toast .progress:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--toast-progress-bg);
+}
+
+.progress.active:before {
+  animation: progress 5s linear forwards;
+}
+
+
+
+@keyframes progress {
+  100% {
+    right: 100%;
+  }
+}
+
+.form-btn.disabled {
+  pointer-events: none;
+  opacity: 0.5; 
+}
+

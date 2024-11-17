@@ -251,31 +251,36 @@
 
 /* For max-width 320px */
 @media (max-width: 420px) {
+
+  
   /* Header */
   .header__content {
+
     grid-template-columns: 1fr;
-    gap: 10rem;
     justify-items: center;
     max-width: 30rem;
     font-size: 2.5rem;
   }
 
   .header__img {
-    max-width: 20rem;
+    position: absolute;
+    max-width: 3rem;
+    left: 65%;
+    top: 48%;
   }
+
 
  /* FEATURES */
  .features__feature {
-    font-size: .5rem;
-  }
-
-  .features__header {
     font-size: .8rem;
   }
 
+  .features__header {
+    font-size: 1rem;
+  }
+
   .features__icon {
-    height: 2.5rem;
-    width: 2.5rem;
+    display: none;
   }
 
 

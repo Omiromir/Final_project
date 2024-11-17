@@ -71,7 +71,7 @@ nav {
 }
 
 .login {
-  display: flex;
+  display: none;
 }
 
 .login__input {

@@ -10,7 +10,7 @@ const predefinedAccounts = [
     owner: "Omir Sondai",
     movements: [200, 455.23, -306.5, 25000, -642.21, -133.9, 79.97, 1300],
     interestRate: 1.2, // %
-    pin: 1111,
+    pin: 12345678,
     movementsDates: [
       "2019-11-18T21:31:17.178Z",
       "2019-12-23T07:42:02.383Z",
@@ -29,7 +29,7 @@ const predefinedAccounts = [
     owner: "Jessica Davis",
     movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
     interestRate: 1.5,
-    pin: 2222,
+    pin: 87654321,
     movementsDates: [
       "2019-11-01T13:15:33.035Z",
       "2019-11-30T09:48:16.867Z",
@@ -76,17 +76,20 @@ logForm.addEventListener("submit", (e) => {
     const account = storedAccounts.find(
       (acc) => acc.username === username && acc.pin === +password
     );
+
+    if (password.length < 8) openAlert("Password must be at least 8 characters long.");
   
     if (account) {
-      // Successful login
+
       localStorage.setItem("loggedInUser", JSON.stringify({ username: account.username }));
+
   
-      // Redirect to the app page after a brief delay
       setTimeout(() => {
-        window.location.href = "../bank/index.html"; // Update this path if needed
+        window.location.href = "../bank/index.html"; 
       }, 1000);
     } else {
-      openAlert("Username or password is incorrect")
+      if (password.length < 8) openAlert("Password must be at least 8 characters long.");
+      else openAlert("Username or password is incorrect")
     }
   
     // Clear form inputs
@@ -99,34 +102,50 @@ logForm.addEventListener("submit", (e) => {
 //////////////////////////////////////////////////////////////////////
 
   
-  regForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-  
-    const username = document.getElementById("register-username").value;
-    const password = document.getElementById("register-password").value;
-    const chpwrd = document.getElementById("confirm-password").value
+regForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-   
-  
-    // Fetch existing accounts from localStorage or initialize with an empty array
-    const storedAccounts = JSON.parse(localStorage.getItem("accounts")) || [];
-  
-    // Check if username already exists
-    const userExists = storedAccounts.some((acc) => acc.owner === username);
-  
-    if (userExists) {
-      openAlert("Username already exists. Please choose a different one.")
-    } else {
+  const username = document.getElementById("register-username").value;
+  const password = document.getElementById("register-password").value;
+  const chpwrd = document.getElementById("confirm-password").value;
 
-      if (password === '' || password !== chpwrd){
-        openAlert("Passwords don't match, try again!")
-        document.getElementById("register-username").value = "";
-        document.getElementById("register-password").value = "";
-        document.getElementById("confirm-password").value = ""; 
-        return
-      }
+  // Fetch existing accounts from localStorage or initialize with an empty array
+  const storedAccounts = JSON.parse(localStorage.getItem("accounts")) || [];
 
-      // Create new account
+  // Check if username already exists
+  const userExists = storedAccounts.some((acc) => acc.owner === username);
+
+  if (userExists) {
+    openAlert("Username already exists. Please choose a different one.");
+    return;
+  }
+
+  if (username.length < 6 || username.length > 50) {
+    showError("Name must contain at least 6 characters");
+    return;
+  }
+
+  // Password matching check
+  if (password !== chpwrd) {
+    openAlert("Passwords don't match, try again!");
+    clearFormInputs();
+    return;
+  }
+
+  // Password validation using switch statement
+  switch (true) {
+    case password.length < 8:
+      openAlert("Password must be at least 8 characters long.");
+      clearFormInputs();
+      return;
+
+    case /\s/.test(password):
+      openAlert("Password must not contain spaces.");
+      clearFormInputs();
+      return;
+
+    default:
+      // If all password checks pass, continue with form submission
       const newAccount = {
         owner: username,
         movements: [],
@@ -137,23 +156,29 @@ logForm.addEventListener("submit", (e) => {
         locale: "en-US",
         username: username.toLowerCase().split(" ").map(name => name[0]).join(""),
       };
-  
+
       // Add new account to the array and save to localStorage
       storedAccounts.push(newAccount);
       localStorage.setItem("accounts", JSON.stringify(storedAccounts));
-  
-      setTimeout(() => {
-        window.location.href = "../Login-Registration/index.html"; 
-      }, 1000);
-    }
-  
-    // Clear form inputs
-    document.getElementById("register-username").value = "";
-    document.getElementById("register-password").value = "";
-    document.getElementById("confirm-password").value = ""; 
 
-  });
-  
+      setTimeout(() => {
+        window.location.href = "../Login-Registration/index.html";
+      }, 1000);
+
+      // Clear form inputs
+      clearFormInputs();
+      break;
+  }
+});
+
+// Function to clear form inputs
+function clearFormInputs() {
+  document.getElementById("register-username").value = "";
+  document.getElementById("register-password").value = "";
+  document.getElementById("confirm-password").value = "";
+}
+
+
 
 
   // ALERT LOGIC
