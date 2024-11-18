@@ -178,10 +178,7 @@ document.getElementById('myForm').addEventListener('submit', function(e) {
     showError("Name must contain only letters and spaces.");
     return;
   }
-  if (nameValue.length < 6 || nameValue.length > 50) {
-    showError("Name must contain at least");
-    return;
-  }
+  
 
   // 2. Email Validation (Format and domain check)
   const emailValue = email.value.trim();
@@ -245,3 +242,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+// Dark and  ligth mode 
+
+const themeToggler = document.getElementById('theme-toggler');
+
+window.onload = () => {
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark-mode');
+  }
+};
+
+themeToggler.addEventListener('click', () => {
+  const isDarkMode = document.documentElement.classList.toggle('dark-mode');
+  localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+});

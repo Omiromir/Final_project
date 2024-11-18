@@ -44,6 +44,7 @@ nav {
 .welcoming {
   display: flex;
   align-items: center;
+  max-width: 30%;
 }
 
 .welcome {
@@ -80,7 +81,7 @@ nav {
   font-size: 1.6rem;
   font-family: inherit;
   text-align: center;
-  width: 12rem;
+  max-width: 12rem;
   border-radius: 10rem;
   margin-right: 1rem;
   color: var(--color-primary);
@@ -170,10 +171,10 @@ nav {
 
 /* Controls buttons */
 .controls {
-  position: absolute;  /* Absolutely position the controls section */
-  top: 11.2rem;          /* Adjust to position above the movements section */
+  position: absolute;  
+  top: 11.3rem;        
   left:0;
-  right: 74rem;
+  right: 72rem;
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -228,9 +229,7 @@ nav {
   background-color: var(--color-primary);
 }
 
-.movements::-webkit-scrollbar {
-  width: 8px; 
-}
+
 
 .movements::-webkit-scrollbar-thumb {
   background-color: inherit;
@@ -241,6 +240,10 @@ nav {
 
 .movements::-webkit-scrollbar-thumb:active {
   background-color: #2a7bd1;
+}
+
+.movements::-webkit-scrollbar {
+  display: none;
 }
 
 .movements__row {

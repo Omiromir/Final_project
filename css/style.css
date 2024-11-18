@@ -1,9 +1,26 @@
-:root {
+/* :root {
     --color-primary: #003466;
     --color-primary-darker: #01294f;
     --color-primary-lighter: #2a7bd1;
     --background-color-btn: #CBCFD2;
     --toast-progress-bg: #ff3d27;
+  } */
+
+  :root {
+    --color-primary: #0054a3;
+    --color-primary-darker: #004280;
+    --color-primary-lighter: #2a7bd1;
+    --background-color-btn: #cbcfd2;
+    --toast-progress-bg: #ff3d27;
+    --text-color: #505660; 
+  }
+  
+  .dark-mode {
+    --color-primary: #cbcfd2; 
+    --color-primary-darker: #002e5f; /* Use the primary color as the darker tone */
+    --color-primary-lighter: #266bff; /* Use darker as lighter for subtlety */
+    --background-color-btn: #003772; /* Darken button background */
+    --text-color: #ffffff; /* Use white for better contrast on dark backgrounds */
   }
   
   html {
@@ -14,9 +31,9 @@
   body {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
-    color: #444;
     line-height: 1.5;
     background-color: var(--color-primary);
+    color: var(--text-color);
   }
   
   body::-webkit-scrollbar {
@@ -39,7 +56,6 @@
   .section {
     padding: 6rem 3rem;
     transition: transform 1s, opacity 1s;
-    background-color: var(--background-color-btn);
   }
   
   .section--offset {
@@ -73,7 +89,7 @@
   }
   
   .section__header {
-    color: #2a3949;
+    color: var(--color-primary);
     font-size: 4rem;
     line-height: 1.3;
     font-weight: 500;
@@ -95,7 +111,7 @@
   
   .nav.sticky {
     position: fixed;
-    background-color: rgba(0, 28, 55, 0.95);
+    background-color: var(--color-primary-darker);
   }
   
   .nav__logo {
@@ -136,7 +152,7 @@
   .nav__link:visited {
     font-size: 1.7rem;
     font-weight: 700;
-    color: inherit;
+    color: #fff;
     text-decoration: none;
     display: block;
     transition: all 0.3s ease;
@@ -153,7 +169,7 @@
   .nav__link--btn:hover {
     color: inherit;
     background-color: var(--color-primary-lighter);
-    color: var(--background-color-btn);
+    color: #fff;
   }
   
   .nav__link--btn:active {
@@ -191,6 +207,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: var(--color-primary-darker);
   }
   
   .header__content {
@@ -246,6 +263,10 @@
   }
   
   /* Why choose us */
+
+  .why-choose-us {
+    background-color: var(--background-color-btn);
+  }
   
   .wcu__title {
     max-width: 100rem;
@@ -300,6 +321,7 @@
 
   .booking {
     padding: 120px 50px;
+    background-color: var(--color-primary-darker);
   }
   
   .booking-title {
@@ -392,7 +414,7 @@
     border-radius: 50px;
     margin-bottom: 9px;
     transition: all .3s cubic-bezier(0.45, 0.1, 0.48, 1);
-    color: var(--color-primary-darker);
+    color: var(--color-primary);
     background-color: var(--background-color-btn);
     font-weight: 799;
   }
@@ -426,6 +448,7 @@
   /* FOOTER */
   
   .footer {
+    box-shadow: 0 0 5px 2px rgba(237, 243, 249, 0.2);
     background-color: var(--color-primary-darker);
     padding: 50px 25px;
   }
@@ -438,7 +461,7 @@
   
   .footer__link {
     font-size: 1.8rem;
-    color: var(--background-color-btn);
+    color: #fff;
   }
 
 
@@ -655,4 +678,5 @@
   pointer-events: none;
   opacity: 0.5; 
 }
+
 

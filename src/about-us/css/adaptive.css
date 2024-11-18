@@ -11,7 +11,7 @@
     }
 
     .features__header {
-      font-size: 2.2rem; /* Adjust font size */
+      font-size: 2.2rem; 
     }
 
     .features__descr {
@@ -30,29 +30,7 @@
       font-size: 9rem;
     }
 
-     /* FEATURES */
-     .features {
-      gap: 3rem;
-    }
-
-   
-    .features__header {
-      font-size: 2rem; /* Adjust font size */
-    }
-
-    .features__descr {
-      font-size: .8rem;
-    }
-  }
-
-
-@media (max-width: 960px) {
-
-  .hero__descr {
-    font-size: 1.6rem;
-}
-    
-    /* Navigation bar */
+      /* Navigation bar */
   .nav__links-wrapper {
     display: none;
     position: absolute;
@@ -81,6 +59,30 @@
     margin: 1rem 0;
   }
 
+
+     /* FEATURES */
+     .features {
+      gap: 3rem;
+    }
+
+   
+    .features__header {
+      font-size: 2rem; /* Adjust font size */
+    }
+
+    .features__descr {
+      font-size: .8rem;
+    }
+  }
+
+
+@media (max-width: 960px) {
+
+  .hero__descr {
+    font-size: 1.6rem;
+}
+    
+  
    /* FEATURES */
    .features {
     grid-template-columns: 1fr;
@@ -178,6 +180,15 @@
 
 .slider__btn--right {
   right: 40%;
+}
+
+
+.faqs__title {
+  font-size: 2.5rem;
+}
+
+.accordion button {
+  font-size: 1.8rem;
 }
 
   }

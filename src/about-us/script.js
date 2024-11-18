@@ -196,3 +196,18 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinksWrapper.classList.toggle('show');
   });
 });
+
+// Dark and  ligth mode 
+
+const themeToggler = document.getElementById('theme-toggler');
+
+window.onload = () => {
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark-mode');
+  }
+};
+
+themeToggler.addEventListener('click', () => {
+  const isDarkMode = document.documentElement.classList.toggle('dark-mode');
+  localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+});

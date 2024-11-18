@@ -1,9 +1,19 @@
 :root {
-  --color-primary: #003466;
-  --color-primary-darker: #01294f;
+  --color-primary: #0054a3;
+  --color-primary-darker: #004280;
   --color-primary-lighter: #2a7bd1;
   --background-color-btn: #cbcfd2;
+  --text-color: #a5a8aa; /* Use white for better contrast on dark backgrounds */
 }
+
+.dark-mode {
+  --color-primary: #cbcfd2; /* Swap button background as primary color */
+  --color-primary-darker: #002e5f; /* Use the primary color as the darker tone */
+  --color-primary-lighter: #266bff; /* Use darker as lighter for subtlety */
+  --background-color-btn: #003772; /* Darken button background */
+  --text-color: #a5a8aa; /* Use white for better contrast on dark backgrounds */
+}
+
 
 html {
   font-size: 62.5%;
@@ -14,9 +24,10 @@ body {
   position: relative;
   font-family: "Poppins", sans-serif;
   font-weight: 300;
-  color: #444;
   line-height: 1.5;
-  background-color: #003466;
+  background-color: var(--color-primary-darker);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body::-webkit-scrollbar {
@@ -68,12 +79,11 @@ body::-webkit-scrollbar {
   width: 100%;
   padding: 0 6rem;
   z-index: 100;
-  background-color: var(--color-primary-darker);
 }
 
 .nav.sticky {
   position: fixed;
-  background-color: rgba(0, 28, 55, 0.95);
+  background-color: var(--color-primary-darker);
 }
 
 .nav__logo {
@@ -114,7 +124,7 @@ body::-webkit-scrollbar {
 .nav__link:visited {
   font-size: 1.7rem;
   font-weight: 700;
-  color: inherit;
+  color: #fff;
   text-decoration: none;
   display: block;
   transition: all 0.3s ease;
@@ -131,7 +141,7 @@ body::-webkit-scrollbar {
 .nav__link--btn:hover {
   color: inherit;
   background-color: var(--color-primary-lighter);
-  color: var(--background-color-btn);
+  color: #fff;
 }
 
 .nav__link--btn:active {
@@ -160,13 +170,14 @@ body::-webkit-scrollbar {
 
 .nav__links-wrapper {
   display: flex;
+  align-items: center;
 }
 
 
 /* HEADER */
 
 .header__hero {
-  height: 100vh;
+  height: max(100vh, 80rem);
   padding: 250px 0;
   background-image: url("../images/hero-bg.png");
   background-repeat: no-repeat;
@@ -189,7 +200,7 @@ body::-webkit-scrollbar {
 
 .hero__descr {
   font-size: 3rem;
-  color: var(--background-color-btn);
+  color: var(--text-color);
   margin-bottom: 9.375rem;
 }
 
@@ -230,8 +241,8 @@ body::-webkit-scrollbar {
 }
 
 .features__header {
-  color: var(--color-primary-lighter);
-  filter: drop-shadow(1px 1px var(--color-primary));
+  color: var(--color-primary-darker);
+  filter: drop-shadow(1px 1px var(--color-primary-lighter));
   font-weight: 700;
   font-size: 4rem;
   margin-bottom: 1rem;
@@ -251,6 +262,8 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   position: relative; 
+  border-radius: 32px;
+  box-shadow: 5px 10px 19px 2px rgba(255, 255, 255, 0.7);
 }
 
 .hover-caption img {
@@ -285,7 +298,7 @@ body::-webkit-scrollbar {
   font-size: 1.8rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: var(--background-color-btn);
+  color: var(--color-primary-lighter);
   margin-bottom: 1rem;
 }
 
@@ -308,7 +321,7 @@ body::-webkit-scrollbar {
   font-size: 2.25rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: var(--color-primary);
+  color: var(--color-primary-darker);
 }
 
 .testimonial__text {
@@ -320,7 +333,7 @@ body::-webkit-scrollbar {
 .testimonial__author {
   margin-left: 3rem;
   font-style: normal;
-  color: var(--color-primary);
+  color: var(--color-primary-darker);
   font-weight: 500;
   display: grid;
   grid-template-columns: 6.5rem 1fr;
@@ -392,7 +405,8 @@ body::-webkit-scrollbar {
 }
 
 .slider__btn:hover {
-  background-color: #fff;
+  background-color: var(--color-primary);
+  color: var(--background-color-btn);
 }
 
 .slider__btn--left {
@@ -512,13 +526,13 @@ body::-webkit-scrollbar {
 
 .footer__copyright {
   font-size: 1.4rem;
-  color: #aaa;
+  color: #ffffff;
   text-align: center;
 }
 
 .footer__link {
   font-size: 1.8rem;
-  color: var(--background-color-btn);
+  color: var(--color-primary-lighter);
 }
 
 

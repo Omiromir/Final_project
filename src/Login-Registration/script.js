@@ -77,7 +77,7 @@ logForm.addEventListener("submit", (e) => {
       (acc) => acc.username === username && acc.pin === +password
     );
 
-    if (password.length < 8) openAlert("Password must be at least 8 characters long.");
+    if (password.length < 4) openAlert("Password must be at least 4 characters long.");
   
     if (account) {
 
@@ -88,7 +88,7 @@ logForm.addEventListener("submit", (e) => {
         window.location.href = "../bank/index.html"; 
       }, 1000);
     } else {
-      if (password.length < 8) openAlert("Password must be at least 8 characters long.");
+      if (password.length < 4) openAlert("Password must be at least 4 characters long.");
       else openAlert("Username or password is incorrect")
     }
   
@@ -105,9 +105,15 @@ logForm.addEventListener("submit", (e) => {
 regForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const username = document.getElementById("register-username").value;
+  const username = document.getElementById("register-username").value.trim();
   const password = document.getElementById("register-password").value;
   const chpwrd = document.getElementById("confirm-password").value;
+
+  // Basic input validation
+  if (!username || !password || !chpwrd) {
+    showError("All fields are required.");
+    return;
+  }
 
   // Fetch existing accounts from localStorage or initialize with an empty array
   const storedAccounts = JSON.parse(localStorage.getItem("accounts")) || [];
@@ -121,7 +127,7 @@ regForm.addEventListener("submit", (e) => {
   }
 
   if (username.length < 6 || username.length > 50) {
-    showError("Name must contain at least 6 characters");
+    openAlert("Username must contain at least 6 characters.");
     return;
   }
 
@@ -132,43 +138,41 @@ regForm.addEventListener("submit", (e) => {
     return;
   }
 
-  // Password validation using switch statement
-  switch (true) {
-    case password.length < 8:
-      openAlert("Password must be at least 8 characters long.");
-      clearFormInputs();
-      return;
-
-    case /\s/.test(password):
-      openAlert("Password must not contain spaces.");
-      clearFormInputs();
-      return;
-
-    default:
-      // If all password checks pass, continue with form submission
-      const newAccount = {
-        owner: username,
-        movements: [],
-        interestRate: 1.2,
-        pin: +password,
-        movementsDates: [],
-        currency: "USD",
-        locale: "en-US",
-        username: username.toLowerCase().split(" ").map(name => name[0]).join(""),
-      };
-
-      // Add new account to the array and save to localStorage
-      storedAccounts.push(newAccount);
-      localStorage.setItem("accounts", JSON.stringify(storedAccounts));
-
-      setTimeout(() => {
-        window.location.href = "../Login-Registration/index.html";
-      }, 1000);
-
-      // Clear form inputs
-      clearFormInputs();
-      break;
+  // Password validation using if statements
+  if (password.length < 4) {
+    openAlert("Password must be at least 4 characters long.");
+    clearFormInputs();
+    return;
   }
+
+  if (/\s/.test(password)) {
+    openAlert("Password must not contain spaces.");
+    clearFormInputs();
+    return;
+  }
+
+  // If all checks pass, continue with account creation
+  const newAccount = {
+    owner: username,
+    movements: [],
+    interestRate: 1.2,
+    pin: +password, 
+    movementsDates: [],
+    currency: "USD",
+    locale: "en-US",
+    username: username.toLowerCase().split(" ").map(name => name[0]).join(""),
+  };
+
+  // Add new account to the array and save to localStorage
+  storedAccounts.push(newAccount);
+  localStorage.setItem("accounts", JSON.stringify(storedAccounts));
+
+  setTimeout(() => {
+    window.location.href = "../Login-Registration/index.html";
+  }, 1000);
+
+  // Clear form inputs
+  clearFormInputs();
 });
 
 // Function to clear form inputs
