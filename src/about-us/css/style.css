@@ -441,7 +441,7 @@ body::-webkit-scrollbar {
   text-align: left;
   width: 100%;
   padding: 1em 0;
-  color: #7288a2;
+  color: #7794b8;
   font-size: 2.15rem;
   font-weight: 400;
   border: none;
@@ -493,7 +493,7 @@ body::-webkit-scrollbar {
   background: currentColor;
 }
 .accordion button[aria-expanded="true"] {
-  color: #4d4d4d;
+  color: var(--color-primary);
 }
 .accordion button[aria-expanded="true"] .icon::after {
   width: 0;
@@ -512,6 +512,7 @@ body::-webkit-scrollbar {
   will-change: opacity, max-height;
 }
 .accordion .accordion-content p {
+  color: var(--color-primary);
   font-size: 1.25rem;
   font-weight: 300;
   margin: 2em 0;
